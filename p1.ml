@@ -31,4 +31,4 @@ then true
 else false;;
 
 Printf.printf "TEST: %B \n" (test 9 23);;
-Printf.printf "the sum of multiples of below 1000 is %d.\n" (sum_all_x3x5 999 0);;
+Printf.printf "ANSWER: %d\n" (sum_all_x3x5 999 0);;

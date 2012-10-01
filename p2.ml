@@ -32,7 +32,7 @@ let rec resolve = fun x y ->
    else resolve (x + 1) (y + (even_fibonacci x));;
 
 
-Printf.printf "%d.\n" (resolve 1 0);;
+Printf.printf "ANSWER: %d \n" (resolve 1 0);;
 
 
    
