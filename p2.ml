@@ -8,31 +8,40 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
  *)
 
 (*
- * Fibbonacci
+ * Fibonacci genarator
  *)
 let rec fibonacci n =
-   if n = 0 || n = 1 
-   then 1
-   else fibonacci (n - 1) + fibonacci (n - 2);;
+  if n = 0 || n = 1 
+  then 1
+  else fibonacci (n - 1) + fibonacci (n - 2);;
 
 (*
- * replace into 0 ,if a fibonacci is odd 
+ * change odd number to zero.
  *)
-let even_fibonacci n = 
-   if 0 = (fibonacci n) mod 2
-   then fibonacci n 
-   else 0;;
+let even_only x = 
+  if 0 == x mod 2
+  then x
+  else 0;;
 
 (*
- * resolver 
- *)
-let rec resolve = fun x y ->
-   if (fibonacci x) > 4000000
-   then y
-   else resolve (x + 1) (y + (even_fibonacci x));;
+* compose a function from two given functions
+*)
+let compose f g = fun x -> f(g(x));;
+let even_only_fibonacci = compose even_only fibonacci;;
 
+(*
+* resolver 
+*)
+let sum_even_fibonacci goal = 
+  let sum = ref 0 in
+  let j = ref 1 in
+  while fibonacci !j <= goal do
+  j := !j + 1;
+  sum := !sum + even_only_fibonacci !j;
+  done;
+  !sum;;
 
-Printf.printf "ANSWER: %d \n" (resolve 1 0);;
+Printf.printf "ANSWER: %d \n" (sum_even_fibonacci 4000000);;
 
 
    

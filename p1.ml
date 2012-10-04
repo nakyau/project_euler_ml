@@ -17,18 +17,22 @@ else 0;;
 (*
 * add all numbers bellow the first arg filtering with `x3x5` into second arg
 *)
-let rec sum_all_x3x5 = fun x y ->
-if x <= 0 
-then y 
-else sum_all_x3x5 (x - 1) (y + x3x5 x);;
+let rec sum_all_x3x5 = fun x ->
+   let sum = ref 0;
+   if x <= 0 
+      then !sum 
+      else begin 
+         sum := !sum + x3x5 x;
+         sum_all_x3x5 (x - 1);
+      end;;
 
 (*
 * test sum_all_x3x5
 *)
 let test = fun x y ->
-if (sum_all_x3x5 x 0 = y)
+if (sum_all_x3x5 x = y)
 then true
 else false;;
 
 Printf.printf "TEST: %B \n" (test 9 23);;
-Printf.printf "ANSWER: %d\n" (sum_all_x3x5 999 0);;
+Printf.printf "ANSWER: %d\n" (sum_all_x3x5 999);;
