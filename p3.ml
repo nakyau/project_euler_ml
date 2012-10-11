@@ -37,4 +37,3 @@ let rec print_list = function
 
 print_list(last (prime_factors 600851475143));;
 
-
