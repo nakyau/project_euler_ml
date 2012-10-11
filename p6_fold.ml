@@ -12,3 +12,11 @@ Find the difference between the sum of the squares of the first one hundred natu
 from forum. in haskell
 sum[1..100]^2 - (foldl (+) 1 (map (^2)[2,3..100]))
 *)
+
+let sqr = fun x -> x * x;;
+
+let range = Array.to_list (Array.init 100 (fun i -> i + 1));;
+
+let diff = ((sqr (List.fold_left (+) 0 range)) - List.fold_left (+) 0 (List.map sqr range));;
+
+Printf.printf "difference: %d \n" diff;;
